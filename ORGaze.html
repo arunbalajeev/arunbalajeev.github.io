@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <script>
+  </script>
+
+<style type="text/css">
+  body {
+    font-family: "Titillium Web","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight:300;
+    font-size:18px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1100px;
+  }
+
+  h1 {
+    font-weight:300;
+  }
+
+  .disclaimerbox {
+    background-color: #eee;
+    border: 1px solid #eeeeee;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+    padding: 20px;
+  }
+
+  video.header-vid {
+    height: 140px;
+    border: 1px solid black;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+  }
+
+  img.header-img {
+    height: 140px;
+    border: 1px solid black;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+  }
+
+  img.rounded {
+    border: 1px solid #eeeeee;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+  }
+
+  a:link,a:visited
+  {
+    color: #1367a7;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #208799;
+  }
+
+  td.dl-link {
+    height: 160px;
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+    box-shadow:
+            0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+            5px 5px 0 0px #fff, /* The second layer */
+            5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+            10px 10px 0 0px #fff, /* The third layer */
+            10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+            15px 15px 0 0px #fff, /* The fourth layer */
+            15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+            20px 20px 0 0px #fff, /* The fifth layer */
+            20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+            25px 25px 0 0px #fff, /* The fifth layer */
+            25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+    margin-left: 10px;
+    margin-right: 45px;
+  }
+
+
+  .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+    box-shadow:
+            0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+            5px 5px 0 0px #fff, /* The second layer */
+            5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+            10px 10px 0 0px #fff, /* The third layer */
+            10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 30px;
+    margin-bottom: 5px;
+  }
+
+  .vert-cent {
+    position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+  }
+
+  hr
+  {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  }
+</style>
+  <head>
+    <title>Spoken Language Object Referring</title>
+
+  </head>
+<meta content="Maps and Landmarks" property="og:title" />
+  <body>
+<center>
+    <table width="1000px">
+      <tr>
+        <td>
+          <center>
+            <span style="font-size:32px">Object Referring in Videos with Language and Human Gaze</span>
+          </center>
+          <br />
+        </td>
+      </tr>
+      <tr align="center">
+        <td>
+          <table width="80%">
+            <tr>
+              <td width="33%">
+                <center>
+                  <span style="font-size:20px">
+                    <a href="https://people.ee.ethz.ch/~arunv/">Arun Balajee Vasudevan</a>
+                  </span>
+                </center>
+              </td>
+              <td width="33%">
+                <center>
+                  <span style="font-size:20px">
+                    <a href="http://www.vision.ee.ethz.ch/~daid/">Dengxin Dai</a>
+                  </span>
+                </center>
+              </td>
+              <td width="34%">
+                <center>
+                  <span style="font-size:20px">
+                    <a href="http://www.vision.ee.ethz.ch/en/members/get_member.cgi?lang=en&id=1">Luc Van Gool</a>
+                  </span>
+                </center>
+              </td>
+            </tr>
+	  </table>
+          <br />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <center>
+            <span style="font-size:20px">ETH Zurich</span>
+          </center>
+          <br />
+          <hr/>
+        </td>
+      </tr> 
+       <tr>
+        <td>
+          <center>
+            <h2>Abstract</h2>
+            <table width="80%">
+              <tr>
+                <td width="30%">
+			We investigate the problem of object referring (OR) i.e. to localize a target object in a visual scene coming with a language description. Humans perceive the world more as continued video snippets than as static images, and describe objects not only by their appearance, but also by their spatio-temporal context and motion features. Humans also gaze at the object when they issue a referring expression. Existing works for OR mostly focus on static images only, which fall short in providing many such cues. This paper addresses OR in videos with language and human gaze. To that end, we present a new video dataset for OR, with 30, 000 objects over 5, 000 stereo video sequences annotated for their descriptions and gaze. We further propose a novel network model for OR in videos, by integrating appearance, motion, gaze, and spatio-temporal context into one network. Experimental results show that our method effectively utilizes motion cues, human gaze, and spatio-temporal context. Our method outperforms previousOR methods.
+                </td>
+              </tr>
+            </table>
+          </center>
+          <br />
+          <hr/>
+        </td>
+      </tr>  
+      <tr>
+        <td>
+          <table>
+            <tr>
+              <td>
+                <center>
+                <img src="https://people.ee.ethz.ch/~arunv/resources/images/ORGaze_pipeline.PNG" width="100%" />
+                </center>
+              </td>
+            </tr>
+	  </table>
+	<hr />
+	</td>
+       </tr> 
+	
+       <tr>
+        <td>
+          <center>
+            <h2>Paper</h2>
+            <table width="80%">
+              <tr>
+                <td width="30%">
+                  <a href="https://arxiv.org/abs/1711.03800">
+                    <img src="https://people.ee.ethz.ch/~arunv/ORVideoGaze.png" width="100%" />
+                  </a>
+                </td>
+                <td width="2%"></td>
+                <td width="60%"><b>Object Referring in Videos with Language and Human Gaze<br /></b>Arun Balajee Vasudevan,
+                Dengxin Dai, Luc Van Gool<br />CVPR 2018<br
+                /><a href="https://arxiv.org/abs/1801.01582">pdf</a>  /
+                <a href="./resources/texts/cvpr18_orgaze.txt">bibtex</a></td>
+              </tr>
+            </table>
+          </center>
+          <br />
+          <hr/>
+        </td>
+      </tr>  
+	<hr/>
+	<tr>
+        <td>
+          <center>
+            <h2>Video</h2><video width="700" height="350" controls>
+			  <source src="https://people.ee.ethz.ch/~arunv/resources/cvpr_video.mp4" type="video/mp4">
+			  <!--<source src="movie.ogg" type="video/ogg"> -->
+			Your browser does not support the video tag.
+			</video>
+		
+          </center>
+          <br />
+          <hr/>
+        </td>
+      </tr>
+	 <hr/>
+	<tr>
+        <td>
+          <center>
+            <h2>Code and Data</h2>
+            <table width="100%">
+	      <tr>
+                <td width="100%" align="center">Gaze Interface: [<a href="https://github.com/arunbalajeev/gaze-interface">code</a>]</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">Dataset: [<a href="https://data.vision.ee.ethz.ch/arunv/dataset.tar.gz">data</a>]</td>
+              </tr>
+            </table>
+          </center>
+          <br />
+          <hr/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <center>
+            <h2>Acknowledgments</h2>
+            <table width="80%">
+              <tr>
+                <td width="100%"><center>This work was supported by Toyota TRACE-Zurich. <br/>This webpage template uses the work of <a href="https://richzhang.github.io/colorization/">Zhang et al.</a></center></td>
+              </tr>
+            </table>
+          </center>
+        </td>
+      </tr>
+     </table>
+
+  </body>
+
+</html>

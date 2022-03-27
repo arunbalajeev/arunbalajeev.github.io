@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<style type="text/css">
+  body {
+    font-family: "Titillium Web","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight:300;
+    font-size:18px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1100px;
+  }
+
+  hr
+  {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  }
+
+  h1 {
+    font-weight:300;
+  }
+
+  .disclaimerbox {
+    background-color: #eee;
+    border: 1px solid #eeeeee;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+    padding: 20px;
+  }
+
+  video.header-vid {
+    height: 140px;
+    border: 1px solid black;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+  }
+
+
+  img.header-img {
+    height: 140px;
+    border: 1px solid black;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+  }
+
+  img.rounded {
+    border: 1px solid #eeeeee;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+  }
+
+  a:link,a:visited
+  {
+    color: #1367a7;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #208799;
+  }
+
+  td.dl-link {
+    height: 160px;
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+    box-shadow:
+            0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+            5px 5px 0 0px #fff, /* The second layer */
+            5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+            10px 10px 0 0px #fff, /* The third layer */
+            10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+            15px 15px 0 0px #fff, /* The fourth layer */
+            15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+            20px 20px 0 0px #fff, /* The fifth layer */
+            20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+            25px 25px 0 0px #fff, /* The fifth layer */
+            25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+    margin-left: 10px;
+    margin-right: 45px;
+  }
+
+
+  .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+    box-shadow:
+            0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+            5px 5px 0 0px #fff, /* The second layer */
+            5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+            10px 10px 0 0px #fff, /* The third layer */
+            10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 30px;
+    margin-bottom: 5px;
+  }
+
+  .vert-cent {
+    position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+  }
+
+
+
+  #authors td {
+    padding-bottom:5px;
+    padding-top:30px;
+  }
+</style>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <!-- Page Title -->
+  <title>Talk2Nav: Long-Range Vision-and-Language Navigation in Cities</title>
+
+  <link href="favicon.ico" rel="icon" type="image/x-icon" />
+  <link href="styles/reset.css" rel="stylesheet" type="text/css" />
+  <link href="styles/finegrained.css" rel="stylesheet" type="text/css" />
+  <link href="styles/finegrained_mobile.css" rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" />
+  <link href="styles/lightbox.css" rel="stylesheet" type="text/css" />
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="styles/lightbox.min.js"></script>
+
+</head>
+
+
+
+<body>
+  
+  <div class="header">
+    <br>
+      <center><span style="font-size:44px;font-weight:bold;">Talk2Nav: Long-Range Vision-and-Language Navigation in Cities</span></center><br/>
+    <!--<h3><i>IJCV submission</i></h3> -->
+    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=""><font color="black">Arun Balajee Vasudevan</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.vision.ee.ethz.ch/~daid/"><font color="black">Dengxin Dai</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=""><font color="black">Luc Van Gool</font></h2>
+    <center><h3><i>ETH Zurich</i>  </h3>
+    <h4><span class="dl-list">
+    <a onclick="ga('send', 'event', 'link', 'download', 'paper-main');" href="talk2nav.pdf" target="_blank">[Main]</a>
+    <a onclick="ga('send', 'event', 'link', 'download', 'paper-main');" href="" target="_blank">[Supp]</a>
+    <a onclick="ga('send', 'event', 'link', 'download', 'paper-main');" href="bibtex.txt" target="_blank">[Bibtex]</a>
+    </span></h4></center> 
+
+  </div>
+
+ 
+  <hr class="midhr">
+<section>
+  <center><h2>Demo Video</h2></center>
+
+  <!--<p> In the qualitative video, we show example results.</p> -->
+
+   <center>
+    <video width="1000" height="550" controls poster="https://people.ee.ethz.ch/~arunv/talk2nav.png">
+		  <source src="https://people.ee.ethz.ch/~arunv/resources/talk2nav.mp4" type="video/mp4">
+		  <!--<source src="movie.ogg" type="video/ogg"> -->
+		Your browser does not support the video tag.
+		</video>
+	
+  </center>
+  <br>
+
+</section>
+<hr class="midhr">
+  <section class="abstract">
+    <!--<center>
+    <img class="width25" src="concept.png" alt="feature" />
+    </center> -->
+    <center><h2><i>Abstract</i></h2></center>
+    <p><i>
+			Autonomous driving models often consider the goal as fixed at the start of the ride. Yet, in practice, passengers will still want to influence the route, e.g. to pick up something along the way. In order to keep such inputs intuitive, we provide automatic way finding in cities based on verbal navigational instructions and street-view images. Our first contribution is the creation of a large-scale dataset with verbal navigation instructions. To this end, we have developed an interactive visual navigation environment based on Google Street View; we further design an annotation method to highlight mined anchor landmarks and local directions between them in order to help annotators formulate typical, human references to those. The annotation task was crowdsourced on the AMT platform, to construct a new  Talk2Nav dataset with 10,714 routes. Our second contribution is a new learning method. Inspired by spatial cognition research on the mental conceptualization of navigational instructions,
+we introduce a soft attention mechanism defined over the segmented language instructions to jointly extract two partial instructions -- one for matching the next upcoming visual landmark and the other for matching the local directions to the next landmark. On the similar lines, we also introduce memory scheme to encode the local directional transitions. Our work takes advantage of the advance in two lines of research: mental formalization of verbal navigational instructions and training neural network agents for automatic way finding. Extensive experiments show that our method significantly outperforms previous navigation methods.
+    </i></p>
+
+  </section>
+  <hr class="midhr">
+<section>
+  <center><h2>Model</h2></center>
+
+   <center>
+    <img width="1100" src="https://people.ee.ethz.ch/~arunv/images/Complete_model.png" alt="feature" />
+        
+  </center>
+  <br>
+
+</section>
+  <hr class="midhr">
+<section>
+  <center><h2>Code and Dataset</h2></center>
+
+   <center>
+    <img width="1100" src="https://people.ee.ethz.ch/~arunv/images/Dataset_Structure.png" alt="feature" />
+        <table width="100%">
+	<tr>
+                <td width="100%" align="center">Interface: [code]</td>
+              </tr>
+              <tr>
+                <td width="100%" align="center">Dataset: [data]</td>
+              </tr>
+        </table>
+  </center>
+  <br>
+
+</section>
+
+<hr class="mainhr">
+<center>
+            <!--<h2>Acknowledgments</h2> -->
+            <table width="80%">
+              <tr>
+                <td width="100%"><center>This work was supported by Toyota TRACE-Zurich. </center></td>
+              </tr>
+            </table>
+          </center>
+
+
+<hr class="mainhr">
+  <center><footer>Copyright &copy; 2019 ETH Zurich </footer></center>
+</body>
+</html>
+
