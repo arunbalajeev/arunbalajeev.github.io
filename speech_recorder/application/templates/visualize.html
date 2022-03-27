@@ -1,0 +1,210 @@
+{% extends "layoutv1.html" %}
+
+{% block content %}
+   
+    <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-collapse collapse">
+
+        <ul class="nav navbar-nav navbar-left">
+            <b>Review of {%print session['assignmentId']%}</b><!--<img alt="LOGO" src="...">
+ <!--<button type="input" id='accept_hit'  onclick="" class="btn btn-success btn-default navbar-btn btn-head">Accept</button>
+<form action="https://people.ee.ethz.ch/~arunv/obj_desc_annotator/static/reject_assignment/"><input type="submit" class="btn btn-danger btn-default navbar-btn btn-head" id="accept_hit" value="Reject HIT" /></form> 
+<button type="input" id='accept_hit'  onclick="removerow('3NPI0JQDAP3H3BRUQTH4KRNWQCMTP3')" class="btn btn-danger btn-default navbar-btn btn-head">Reject HIT</button> 
+            Reason for rejection:<input type="text" size="80" id="reason"/><br/>
+	<span class="span-title">HIT duration: </span>3.7 minutes
+        </ul>-->
+    </div>
+    </nav>
+    <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-collapse collapse">
+
+        <ul class="nav navbar-nav navbar-left">
+        </ul>
+	<ul class="nav navbar-nav navbar-right" style="margin-right:20px">
+            <input type="button" class="btn-head btn btn-default navbar-btn" style="background-color:#00FFFF;visibility:hidden" value="Show Instructions"
+                   onclick="$('#show_instructions').modal('show');" /></ul>
+        <center><h3><b>Image Annotation: Visualization</b></h3></center>
+
+    </div>
+    </nav>
+
+<h3 align="center">Recordings</h3>
+	<div class="col-md-1"></div>
+	<div class="col-md-11">
+	<table>
+	{% block loop_item %}
+	{% for audio in audio_blob %}
+	<tr><!--<td style="width:600px;height:120px">
+	<blockquote style="border: 5px solid #D3D3D3; padding: 0px;height:100px;">
+	{% if loop.index0==0%}
+	<p id="{{ 'descriptions_' ~ loop.index0}}" class="lead" align="center" style="margin-top:10px;">{%print " "+session['descriptions'][loop.index0]%}</p>
+	{% else %}
+	<p id="{{ 'descriptions_' ~ loop.index0}}" class="lead" align="center" style="margin-top:10px;">{%print " "+session['descriptions'][loop.index0]%}</p>
+	{% endif %}
+	</blockquote></td> -->
+	{% set url = ["https://people.ee.ethz.ch/~arunv/speech_recorder/", audio] %}
+	<td style="height:100px;width:270px;" align="left">
+	<div id="{{ 'recording-vlist_' ~ loop.index0}}"><div style='height:120px'><p recording="{{ url|join('') }}"><br><audio controls src="{{ url|join('') }}"></audio></p></div></div></td>
+	<!--<script>
+	blank=("")
+	$('#waveform-list_0').html(blank);var wavesurfer = WaveSurfer.create({container: '#waveform-list_0',cursorWidth:0,waveColor:'#000'});wavesurfer.load(url);
+   	</script>
+	<td style="height:100px;">
+	<div id="{{ 'waveform-vlist_' ~ loop.index0}}" align="center" style="margin-top:-30px;margin-left:30px;"></div></td> -->
+	
+	</tr>
+	{% endfor%}
+	{% endblock %}
+	<!--<p id="descriptions_10" class="lead hidden" align="center" style="margin-top:10px;">SUBMIT HIT now </p>-->
+	    </table></div>
+	<!--<div class="col-md-1">
+      	<div id="recording-list"></div></div> -->
+
+
+
+<!--
+    <div>
+    <div class="col-md-6"><center>
+    <p><b>Annotate and Visualize the bounding box:</b></p>	<canvas id="myCanvas" width="960px" height="480px" id="jcrop_target" style="background: url('{{imageId}}');background-size: 960px 480px;" >
+Your browser does not support the HTML5 canvas tag.</canvas>
+    </center></div>
+    <div class="col-md-10"> 
+	<div>
+	
+ 	</div>	  
+	
+     </div>
+     </div>
+     <div>
+	<div class="col-md-5">
+	</div>
+     <div class="col-md-16">
+	<h3>Box list</h3>
+    	<table class="table table-striped header-fixed" id='boxlistvis'>
+        	<thead>
+        	<tr>
+            	<th style="width:3%">Name</th>
+            	<th style="width:5%">Color</th>
+            	<th style="width:15%">Description</th>
+		<th style="width:5%">objname</th>
+		<th style="width:3%">objcolor</th>
+		<th style="width:3%">numInst</th>
+		<th style="width:5%">Action</th>
+		<th style="width:5%">Future Act</th>
+		<th style="width:3%">Shape</th>
+		<th style="width:4%">Attention</th>
+		<th style="width:3%">Dist</th>
+		<th style="width:3%">SDist</th>
+		<th style="width:3%">Road</th>
+		<th style="width:4%">Faces</th>
+		<th style="width:3%">Position</th>
+		<th style="width:3%">Movt</th>
+		<th style="width:7%">Worker</th>
+		<th style="width:12%">Assignment</th>
+		<th style="width:5%">Accept</th>
+		<th style="width:5%">Remove</th>
+        	</tr>
+        	</thead>
+        	<tbody id="track">
+		{% block loop_item2 %}
+		{% for xnum in xbox: %}
+		<tr id='trow0' style="display:block">
+				<script type="text/javascript">
+					  var canvas = document.getElementById('myCanvas');
+					  var context = canvas.getContext('2d');
+					  context.beginPath();
+					  context.rect({{xbox[loop.index0]}}, {{ybox[loop.index0]}}, {{wbox[loop.index0]}}, {{hbox[loop.index0]}});	
+					  context.fillStyle = 'transparent';
+					  context.fill();
+					  context.lineWidth = 5;
+					  context.strokeStyle = '{{colbox[loop.index0]}}';
+					  context.stroke();
+				</script>
+        			<td style="width:3%">Box{{loop.index0}}</td>
+        			<td style="width:5%" ><button type="button" class="btn btn-primary btn-sm" style="width:90%;background-color:{{colbox[loop.index0]}}"><span style="font-size:0.7em">{{colbox[loop.index0]}}</span></button></td>
+        			<td style="width:15%">{{descbox[loop.index0]}}</td>
+        			<td style="width:5%">{{boxattrobj[loop.index0]}}</td>
+        			<td style="width:3%">{{boxattrcolor[loop.index0]}}</td>
+        			<td style="width:3%">{{boxattrnuminst[loop.index0]}}</td>
+				<td style="width:5%">{{boxattraction[loop.index0]}}</td>
+				<td style="width:5%">{{boxattrfutact[loop.index0]}}</td>
+        			<td style="width:3%">{{boxattrshape[loop.index0]}}</td>
+        			<td style="width:4%">{{boxattrattend[loop.index0]}}</td>
+        			<td style="width:3%">{{boxusdist[loop.index0]}}</td>
+        			<td style="width:3%">{{boxussdist[loop.index0]}}</td>
+				<td style="width:3%">{{boxusroad[loop.index0]}}</td>
+        			<td style="width:4%">{{boxusdirec[loop.index0]}}</td>
+        			<td style="width:3%">{{boxusrot[loop.index0]}}</td>
+				<td style="width:3%">{{boxusspeed[loop.index0]}}</td>
+				<td style="width:7%">{{worker[loop.index0]}}</td>
+				<td style="width:12%">{{assignmt[loop.index0]}}</td>
+				<td style="width:5%">
+					{% if approved[loop.index0]==0:%}
+            					<button type="input" id='accept_hit'  onclick="acceptassignment('{{assignmt[loop.index0]}}')" class="btn btn-success btn-default btn-head btn-sm">Accept Asst</button> 
+					{% else %}
+						Accepted
+					{% endif%}
+					
+				</td>
+				<td style="width:5%"><button type="input" id='accept_hit'  onclick="removerow('{{assignmt[loop.index0]}}')" class="btn btn-danger btn-default btn-head btn-sm">Remove Box</button> </td>
+    		</tr>
+		{% endfor %}
+		{% endblock %}
+		</tbody>
+    	</table>
+     </div>
+	 <div class="col-md-3">
+	</div>
+        <div class='col-md-3'>
+	
+	</div>
+	 
+	<img src="{{imageId}}" id="prev_crop" width="800px" style="visibility:hidden" height="500px"/>
+    </div> -->
+
+<div id="show_instructions" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <center><h3 class="modal-title">Instructions</h3></center>
+            </div>
+                <div class="modal-body">
+                   <center><ul style="text-align:left">This assignment consists of two related tasks. First, you will complete the diversity task, in which you will group frames of a video by visual similarity. This task is called the diversity task because the number of groups created will reflect the diversity of the visual content within the video. In the second task, the relevance task, you will assess the relevance of the images in the groups created in the diversity task to a query (a phrase)
+				
+				<li> The two tasks are to be performed one after the other.</li>
+				<li> First, The <b>Diversity task</b></li>
+					<ul>
+					<li> You are given frames from a video in sequential order.</li>
+					<li> Your task is to assign frames of the video to several groups, according to their visual similarity.</li>
+						<ul>
+						<li>There is a special box named "Trash" group. Please move all frames that are "bad", e.g. blurry, don't have any clear objects, are dark or that show cuts between video sequences to this group</li>
+						<li>Place the visually similar frames into the same group.</li>
+						<li>The groups need not consist of consecutive frames. Jumping around to select frames is fine too</li>
+						</ul>
+					<li> You can create as many groups as you like.</li>
+					<li> After finishing this task, press the “Submit Diversity” button.</li>
+					</ul>
+				<li> Second, The <b>Relevance task</b></li>
+					<ul>
+					<li> You are shown the same frames as before.</li>
+					<li> Your task is to assess how relevant the given frames are to a text query.</li>
+					<li> Annotate the given frames as Very Good, Good or Not Good.</li>
+					<li> After giving a label to all the frames, press the “Submit HIT” button.</li>
+					</ul>
+				<li>After completion the HIT will be completed.</li>
+				</ul></center>
+                </div>
+                <div class="modal-footer">
+                </div>
+        </div>
+
+      </div>
+</div>
+<div  style="visibility: hidden;">
+<form action="https://people.ee.ethz.ch/~arunv/speech_recorder/static/visualize/"  style="visibility: hidden;" method="GET" id="vis_submit" style='position:absolute; top:710px; left:400px'>
+    Assignment ID: <input id=assignmentId" value="{{assignmt}}" name="assignmentId"/>
+    <br/>
+</form>
+{% endblock %}

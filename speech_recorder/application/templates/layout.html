@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Description Task</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <link rel="shortcut icon" href={{ url_for('static', filename='favicon.ico') }}>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<link href="https://people.ee.ethz.ch/~arunv/speech_recorder/static/css/style.css" type="text/css" rel="stylesheet"/>
+	<link href="https://people.ee.ethz.ch/~arunv/speech_recorder/static/css/bootstrap-theme.min.css" rel="stylesheet"> 
+	<link href="https://people.ee.ethz.ch/~arunv/speech_recorder/static/slide.css" rel="stylesheet" type="text/css">
+	<link href="https://people.ee.ethz.ch/~arunv/speech_recorder/static/select_drag.css" rel="stylesheet" type="text/css">
+	<link href="https://people.ee.ethz.ch/~arunv/speech_recorder/static/carousel.css" rel="stylesheet" type="text/css">
+	<link href="https://people.ee.ethz.ch/~arunv/speech_recorder/static/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://people.ee.ethz.ch/~arunv/speech_recorder/static/css/bootstrap-select.css" rel="stylesheet">
+	<link href="https://people.ee.ethz.ch/~arunv/speech_recorder/static/css/bootstrap-combobox.css" rel="stylesheet">
+	<link href="https://people.ee.ethz.ch/~arunv/speech_recorder/static/css/bootstrap-select.min.css" rel="stylesheet">
+	<link href="https://people.ee.ethz.ch/~arunv/speech_recorder/static/css/bootstrap.css" rel="stylesheet">
+<link href="https://people.ee.ethz.ch/~arunv/speech_recorder/static/jcrop_css/jquery.Jcrop.css" rel="stylesheet">
+<link href="https://people.ee.ethz.ch/~arunv/speech_recorder/static/jcrop_css/jquery.Jcrop.min.css" rel="stylesheet">
+	<link href="https://people.ee.ethz.ch/~arunv/speech_recorder/static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://people.ee.ethz.ch/~arunv/speech_recorder/static/css/bootstrap.min.css">
+	<link href="https://people.ee.ethz.ch/~arunv/speech_recorder/static/drag_drop.css" rel="stylesheet" type="text/css">
+	<script src="https://people.ee.ethz.ch/~arunv/speech_recorder/static/slide.js" type="text/javascript"></script>
+	<script src="https://people.ee.ethz.ch/~arunv/speech_recorder/static/drag_drop.js" type="text/javascript"></script>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
+	<script src="https://people.ee.ethz.ch/~arunv/speech_recorder/static/carousel.js" type="text/javascript"></script>
+	<script src="https://people.ee.ethz.ch/~arunv/speech_recorder/static/submit_validation.js" type="text/javascript"></script>
+	<script src="https://people.ee.ethz.ch/~arunv/speech_recorder/static/dataStore.js" type="text/javascript"></script>
+	<!--<script src="https://people.ee.ethz.ch/~arunv/local_obj_desc_annotator/static/dropdown.js" type="text/javascript"></script> -->
+	<script src="https://people.ee.ethz.ch/~arunv/speech_recorder/static/bootstrap-select.js" type="text/javascript"></script>
+	<script src="https://people.ee.ethz.ch/~arunv/speech_recorder/static/bootstrap-combobox.js" type="text/javascript"></script>
+	<script src="https://people.ee.ethz.ch/~arunv/speech_recorder/static/bootstrap-select.min.js" type="text/javascript"></script>
+	<script src="https://people.ee.ethz.ch/~arunv/speech_recorder/static/jcrop_js/jquery.Jcrop.min.js" type="text/javascript"></script>
+	<script src="https://people.ee.ethz.ch/~arunv/speech_recorder/static/jcrop_js/jquery.Jcrop.js" type="text/javascript"></script>
+	<script src="https://people.ee.ethz.ch/~arunv/speech_recorder/static/jcrop_js/jquery.color.js" type="text/javascript"></script>
+	<!--<script src="https://people.ee.ethz.ch/~arunv/local_obj_desc_annotator/static/bootstrap.min.js" type="text/javascript"></script> -->
+
+	<style>
+	html { overflow-x: hidden; }
+	</style>
+<script>
+var audio_blob = new FormData();
+var box_X = new Array();
+var box_Y = new Array();
+var box_W = new Array();
+var box_H = new Array();
+var box_color = new Array();
+
+var recorder_no,active=0;
+var approval0=0,approval1=0,approval2=0,approval3=0,approval4=0;mic_activated=0;volume_level=0.5,click_record=0;
+var box_desc = [];
+var endpoint = "https://people.ee.ethz.ch/~arunv/speech_recorder/static/"
+var rowno=1;
+var currentrow=0;
+var contxt=""
+var bboxvalues=[]
+var bboxcolors=[]
+var currentbboxvalue=[]
+var current_position="";
+var current_count=1;
+var current_relspat0=[];var current_relspat1=[];var current_relspat2=[];var current_relspat3=[];var current_relspat4=[];var current_relspat5=[];
+colornow=""
+var check_play_video=0;
+var check_submit=0;
+var co=0;
+var desc_position=0;
+var out_data={}
+var str_arr = [],str_arr_dummy=[];
+
+$(document).ready(function() {
+  $('#play-video').on('click', function(ev) {
+    check_play_video =1;
+    var video = document.getElementById("myVideo");
+    video.play();
+    ev.preventDefault();
+ 
+  });
+  $('#next-audio').on('click', function(ev) {
+    document.getElementById("descriptions_"+desc_position.toString()).classList.add('hidden');
+    //document.getElementById("descriptions_10").classList.add('hidden',desc_position==10);
+    desc_position=desc_position+1;
+    if(desc_position==10){
+    document.getElementById("descriptions_"+desc_position.toString()).classList.remove('hidden');
+    //desc_position=0;
+    }
+    else if(desc_position==11){
+	document.getElementById("descriptions_0").classList.remove('hidden');
+    	desc_position=0;
+    }
+    else{
+    document.getElementById("descriptions_"+desc_position.toString()).classList.remove('hidden');
+    }
+  });
+  $('#record_0').on('hover', function(ev) {
+     $recording = $('#recording_0');
+     $timeDisplay = $('#time-display_0');
+     $record = $('#record_0');
+     $cancel = $('#cancel_0');
+     console.log("hello")
+  });
+  $('#objdesc').bind("cut copy paste",function(e) {
+          e.preventDefault();
+      });
+});
+function checkplayvideo()
+{	//console.log('entered')
+	if (check_play_video==1){
+	}
+	else{alert('Click Play Video button to watch the video');}
+};
+
+function refresh(){
+	$('#refresh').load(document.URL +  ' #refresh');
+	//$('#refresh2').load(document.URL +  ' #refresh2');
+	return false;
+}
+
+function getEventTarget(e) {
+    e = e || window.event;
+    return e.target || e.srcElement; 
+}
+window.onload = function () {
+    //$('#watch_video').modal('show');
+    //$('#resetbut').click();
+    //$('#play-video').click();
+    //$("select#audio-in-select").change();
+}
+$(function (){
+	//$("#audio-in-select").change();
+});
+$(document).ready(function() {
+// Tooltip only Text
+
+});
+</script>
+	
+    </head>
+
+    <body>
+        {% block content %}{% endblock %}
+    </body>
+</html>
