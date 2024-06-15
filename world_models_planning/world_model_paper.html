@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Planning with Adaptive World Models for Autonomous Driving">
+  <meta name="keywords" content="world models">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Planning with Adaptive World Models for Autonomous Driving </title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7MV5HDD3TQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-7MV5HDD3TQ');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <!-- <link rel="stylesheet" href="./static/css/fontawesome.all.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-3 publication-title"> Planning with Adaptive World Models for Autonomous Driving </h1>
+            <h2 class="title is-5 publication-title"> CoRL 2024 submission 90 </h2>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block" style="margin: 0 1rem;">
+                
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              
+            </div>
+            
+            <div class="is-size-6 publication-authors">
+              
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                
+              </div>
+
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TEASER + INTRO -->
+  <section class="hero teaser" style="margin-top: -60px;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <!-- First column in its own row -->
+        <div class="column is-three-fourths">
+          <h3 class="subtitle has-text-centered">
+            <b>tl;dr: We propose a model-predictive-control (MPC)-based planner (AdaptiveDriver) that makes use of world models who's agent behaviours adapt to the sequence. We compare AdaptiveDriver to state-of-art baselines (PDMC[1]).  </b> 
+          </h3>
+        </div>
+      </div>
+      <!-- Second column in a separate row -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="is-centered is-max-desktop teaser">
+            <div>
+	      <p style="font-size: 11pt; width: 75%; margin: 0 auto;">
+		PDMC collides with a decelerating lead vehicle  (frame 20) while AdaptiveDriver avoids the collision.
+              </p>
+              <video class="center-video" autoplay muted loop playsinline style="margin: 1em auto 0 auto;" controls>
+                <source src="./videos/103b6dd8d33250d4_near_multiple_vehicles.mp4" type="video/mp4">
+              </video>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- TEASER + INTRO -->
+  <section class="hero teaser" style="margin-top: 0px;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <!-- First column in its own row -->
+        <div class="column is-three-fourths">
+          <h3 class="subtitle has-text-centered">
+            <b></b> 
+          </h3>
+        </div>
+      </div>
+      <!-- Second column in a separate row -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="is-centered is-max-desktop teaser">
+            <div>
+	      <p style="font-size: 11pt; width: 75%; margin: 0 auto;">
+		PDMC collides with a decelerating lead vehicle  (frame 20) while AdaptiveDriver avoids the collision.
+              </p>
+              <video class="center-video" autoplay muted loop playsinline style="margin: 1em auto 0 auto;" controls>
+                <source src="./videos/77d9509d76455d4f_near_multiple_vehicles.mp4" type="video/mp4">
+              </video>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- TEASER + INTRO -->
+  <section class="hero teaser" style="margin-top: 10px;">
+    <div class="container is-max-desktop">
+      
+      <!-- Second column in a separate row -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="is-centered is-max-desktop teaser">
+            <div>
+	     <p style="font-size: 11pt; width: 75%; margin: 0 auto;">
+		AdaptiveDriver reaches the goal state (green square) faster than PDMC for a turn-right sequence. 
+              </p>
+              <video class="center-video" autoplay muted loop playsinline style="margin: 1em auto 0 auto;" controls>
+                <source src="./videos/a095a8c374e853b2_starting_right_turn.mp4" type="video/mp4">
+              </video>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!-- TEASER + INTRO -->
+  <section class="hero teaser" style="margin-top: 10px;">
+    <div class="container is-max-desktop">
+      
+      <!-- Second column in a separate row -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="is-centered is-max-desktop teaser">
+            <div>
+<p style="font-size: 11pt; width: 75%; margin: 0 auto;">
+		AdaptiveDriver reaches the goal state (green square) faster than PDMC for a straight-road sequence. 
+              </p>
+              <video class="center-video" autoplay muted loop playsinline style="margin: 1em auto 0 auto;" controls>
+                <source src="./videos/de617dd876185183_near_multiple_vehicles.mp4" type="video/mp4">
+              </video>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section" style="margin-top: -30px;">
+    <div class="container is-max-desktop">
+      <!-- Concurrent Work. -->
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Related Works</h2>
+  
+          <div class="content has-text-justified">
+            
+            <p>
+              [1] Dauner, Daniel, et al. "Parting with misconceptions about learning-based vehicle motion planning." Conference on Robot Learning. PMLR, 2023.
+            </p>
+            
+            
+          </div>
+        </div>
+      </div>
+      <!--/ Concurrent Work. -->
+  
+    </div>
+  </section>
+</body>
+
+</html>
