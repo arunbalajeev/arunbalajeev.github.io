@@ -163,6 +163,7 @@ function init() {
     } );
 
     // Load COLMAP data
+    /*
     const colmap_fileName = 'https://huggingface.co/jefftan969/3dgs-splats/resolve/master/transdet-t01_v01_s00_r08_ImageDensity_A01_iPad_LTS/sparse/images.txt';
 
     const fileLoader = new THREE.FileLoader(manager);
@@ -190,6 +191,7 @@ function init() {
 
     }
     );
+    */
     
 
 
