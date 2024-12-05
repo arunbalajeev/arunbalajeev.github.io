@@ -142,7 +142,7 @@ function init() {
     // perspectiveCamera.position.x = 0;
     // perspectiveCamera.position.y = 100;
     perspectiveCamera.position.z = -20;
-    perspectiveCamera.up.set(1, 0, 0); perspectiveCamera.lookAt(1, 0, 0);
+    perspectiveCamera.up.set(0, 0, 1); perspectiveCamera.lookAt(1, 0, 0);
 
     // Load point cloud
     var ply_fileName = 'https://huggingface.co/arunbalajeev/3dgs_viewer/resolve/main/nuscenes_103_background_object_pc_SMOREcoord.ply';
