@@ -145,7 +145,7 @@ function init() {
     perspectiveCamera.up.set(0, -1, 0); perspectiveCamera.lookAt(0, 1, 0);
 
     // Load point cloud
-    var ply_fileName = 'https://huggingface.co/arunbalajeev/3dgs_viewer/resolve/main/vkitti_scene06_background_object_pc.ply';
+    var ply_fileName = 'https://huggingface.co/arunbalajeev/3dgs_viewer/resolve/main/nuscenes_103_background_object_pc_SMOREcoord.ply';
     const plyLoader = new PLYLoader(manager);
 
     plyLoader.load( ply_fileName, function ( geometry ) {
