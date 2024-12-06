@@ -1,8 +1,8 @@
 
 import * as THREE from 'three';
 
-//import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
-import { FlyControls } from 'three/addons/controls/FlyControls.js';
+import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
+//import { FlyControls } from 'three/addons/controls/FlyControls.js';
 import { PLYLoader } from 'three/addons/loaders/PLYLoader.js';
 import Stats from 'three/addons/libs/stats.module.js';
 import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
