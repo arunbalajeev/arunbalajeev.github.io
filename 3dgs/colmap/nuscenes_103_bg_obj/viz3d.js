@@ -1,8 +1,8 @@
 
 import * as THREE from 'three';
 
-import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
-//import { FlyControls } from 'three/addons/controls/FlyControls.js';
+//import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
+import { FlyControls } from 'three/addons/controls/FlyControls.js';
 import { PLYLoader } from 'three/addons/loaders/PLYLoader.js';
 import Stats from 'three/addons/libs/stats.module.js';
 import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
@@ -204,10 +204,15 @@ function init() {
     stats = new Stats();
     document.body.appendChild( stats.dom );
 
-    controls = new TrackballControls( perspectiveCamera, renderer.domElement );
-    controls.rotateSpeed = 2.0;
-    controls.zoomSpeed = 1.5;
-    controls.panSpeed = 0.8;
+    //controls = new TrackballControls( perspectiveCamera, renderer.domElement );
+    //controls.rotateSpeed = 2.0;
+    //controls.zoomSpeed = 1.5;
+    //controls.panSpeed = 0.8;
+
+    controls = new FlyControls( perspectiveCamera, renderer.domElement );
+    controls.movementSpeed = 2.0;
+    controls.rollSpeed  = 0.005;
+    controls.dragToLook = True;
 
     // controls = new OrbitControls( perspectiveCamera, renderer.domElement );
     // controls.update();
