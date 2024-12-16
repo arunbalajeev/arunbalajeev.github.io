@@ -212,7 +212,7 @@ function init() {
     controls = new FlyControls( perspectiveCamera, renderer.domElement );
     controls.movementSpeed = 2.0;
     controls.rollSpeed  = 0.005;
-    controls.dragToLook = True;
+    controls.dragToLook = true;
 
     // controls = new OrbitControls( perspectiveCamera, renderer.domElement );
     // controls.update();
